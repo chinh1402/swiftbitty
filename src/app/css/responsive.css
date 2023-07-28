@@ -1,5 +1,14 @@
 
 /* other resolution */
+
+/* My pc screen reso */
+@media (min-width: 1700px) {
+    .about-us__quote {
+        left:24%;
+        max-width: 28%;
+    }
+}
+
 @media (min-width: 1025px) {
     .hide-on-pc {
         display: none;
@@ -48,11 +57,16 @@
         font-size: 2.8rem;
     }
 
+    .menu__details-comboname {
+        padding-right: 12px;
+    }
+
     .menu__details-wrapper {
         padding: 48px 52px;
     }
 
     .menu__details-piece-description {
+        padding-right: 0;
         max-width: 460px;
     }
 
@@ -140,11 +154,14 @@
         display: none;
     }
     .menu__combos-list {
-        margin: 40px 0 0 0;
+        margin-top: 40px;
+        padding: 0 12px;
     }
 
     .menu__combos-list-item {
         margin: 0 8px;
+        padding-left: 4px;
+        padding-right: 4px;
     }
 
     .menu__details-wrapper {

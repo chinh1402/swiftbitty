@@ -1,6 +1,14 @@
 /* font family, font-size, line-height, box-sizing */
+
+/* Something along the line makes this bug possible for some reason.. polifilled, app router, Hot reload */
+/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,700&display=swap'); */
+
 @import 'normalize.css';
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,700&display=swap');
+@import 'css/fonts.css'; /* originated from the google API above, that was weird */
+
+*{
+  /* background-color: rgba(0, 128, 0, 0.02); */
+}
 
 :root {
   /* font-family, colors */
@@ -223,6 +231,7 @@ h1,h2,h3,h4,h5,.header__logo, .about-us__quote {
   padding: 28px 0;
   background-color: rgba(219, 142, 79, 0.1);
   cursor: pointer;
+  transition: background-color 0.15s ease-in;
 }
 
 .menu__combos-list-item--active {
@@ -323,6 +332,7 @@ h1,h2,h3,h4,h5,.header__logo, .about-us__quote {
 }
 
 .menu__details-piece-description {
+  padding-right: 40px;
   margin-top: 8px;
   display: block;
 }

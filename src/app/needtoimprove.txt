@@ -1,3 +1,11 @@
 1. Enhance the UX scrolling of menu items
-2. Use dynamic informations to update the menu items
+2. Use dynamic informations to update the menu items (fixed)
+3. Why you used useEffect, useStates?
 
+1. Font bug by @import  font (fix by taking the value from the api parse that in a different css file)
+Bug reproduce: Must use App router
+First, have one font import
+Second, other css file import, but that file must have content
+=> you got a bug
+
+2. css background style bug (fix by  doing inline style (not good for accessibility)), Must use App router
