@@ -9,3 +9,14 @@ Second, other css file import, but that file must have content
 => you got a bug
 
 2. css background style bug (fix by  doing inline style (not good for accessibility)), Must use App router
+
+3. Fix the bug where you click onto select item in OrderMenu (in orderOnline), vertical scrollbar appear
+unintended
+
+There's a workaround on this: you can remove the margin bottom on description, reset 
+the height so that select can contain the height
+Fixed: adding padding-bottom onto list for list to take more space
+
+4. Make arrow function in orderOnline so that It works as intended (scroll 2 3 items at once)
+
+

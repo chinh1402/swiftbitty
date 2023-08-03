@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import contentData from './Data__components/ContentData.js'
+import contentData from '../../Data__components/ContentData.js'
 
 const MenuDetails = function ({dt}) {
     return dt.comboDetailsItems.map((value, index) => {

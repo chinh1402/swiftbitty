@@ -1,6 +1,6 @@
 "use client";
 import Link from 'next/link';
-import idreturn from '../functions/idreturn';
+import idreturn from '../Generic__components/functions/idreturn';
 import { useEffect } from 'react';
 
 const Header = () => { 
