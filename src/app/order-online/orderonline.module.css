@@ -209,7 +209,7 @@
     flex-direction: column;
 }
 
-.form-group .invalid {
+.form-group.invalid {
     outline: #F48B36;
     color: #F48B36;
 }
@@ -223,7 +223,7 @@
 
 .form-control {
     /* remove later */
-    min-width: 278px;
+    width: 100%;
     font-size: 1.6rem;
     border: 2px solid #BBC8D4;
     border-radius: 4px;
@@ -267,12 +267,15 @@
     flex-basis: 50%;
 }
 
-.form-right {
-    /* flex-basis: 50%; */
-}
-
-.announcement-texts {
+.cash-payment-notif {
     font-size: 1.8rem;
     font-weight: 600;
-    line-height: 2.4rem;
+    line-height: 2.9rem;
+    margin-bottom: 54px;
+    display: block;
 }
+
+.form-right {
+    display: none;
+}
+

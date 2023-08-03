@@ -1,3 +1,8 @@
+'use client'
+import classNames from 'classnames/bind';
+import styles from '../../../order-online/orderonline.module.css';
+
+const cx = classNames.bind(styles);
 
 export default function Validator(formSelector) {
     function getParent(element, parentSelector) {
@@ -5,7 +10,7 @@ export default function Validator(formSelector) {
             if (element.parentElement.classList.contains(parentSelector)) {
                 return element.parentElement;
             }
-            element = element.parentSelector
+            element = element.parentElement;
         }
     }
 
@@ -56,7 +61,7 @@ export default function Validator(formSelector) {
                     rule = ruleInfo[0];
                 }
 
-                ruleFunc = validatorRules[rule];
+                let ruleFunc = validatorRules[rule];
 
                 if (isRuleHasValue) {
                     ruleFunc = ruleFunc(ruleInfo[1]);
@@ -69,7 +74,7 @@ export default function Validator(formSelector) {
                 }
             }
             input.onblur = onValidateHandler;
-            input.oninput = onInputHandler
+            input.oninput = onInputHandler;
         }
 
         // tim rules tu thang formRules ' => error Message + error State ' => 
@@ -83,12 +88,13 @@ export default function Validator(formSelector) {
                 errorMessage = rule(event.target.value);
                 return rule(event.target.value)
             })
-
+            console.log(errorState)
             if (errorState) {
-                let formGroupElement = getParent(event.target, 'form-group');
+                let formGroupElement = getParent(event.target, cx('form-group'));
                 if (formGroupElement) {
-                    formGroupElement.classList.add('invalid');
-                    let formMessageElement = formGroupElement.querySelector('.form-message');
+                    formGroupElement.classList.add(cx('invalid'));
+                    let formMessageElement = formGroupElement.querySelector(cx('.form-message'));
+                    console.log(formMessageElement);
                     if (formMessageElement) {
                         formMessageElement.innerText = errorMessage;
                     }
@@ -98,10 +104,10 @@ export default function Validator(formSelector) {
         }
 
         function onInputHandler (event) {
-            let formGroupElement = getParent(event.target, 'form-group');
-            let formMessageElement = formGroupElement.querySelector('.form-message');
-            if (formGroupElement.classList.contains('invalid')) {
-                formGroupElement.classList.remove('invalid');
+            let formGroupElement = getParent(event.target, cx('form-group'));
+            let formMessageElement = formGroupElement.querySelector(cx('.form-message'));
+            if (formGroupElement.classList.contains(cx('invalid'))) {
+                formGroupElement.classList.remove(cx('invalid'));
                 formMessageElement.innerText = '';
             }
         }

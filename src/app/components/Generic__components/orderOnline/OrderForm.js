@@ -8,7 +8,7 @@ const cx = classNames.bind(styles);
 function OrderForm() {
     
     useEffect(() => {
-        
+        Validator("#register-form");
     })
     return (
         <>
@@ -16,8 +16,8 @@ function OrderForm() {
                 <form action="" method="POST" className={cx("form")} id="register-form">
                     <div className={cx("form-wrapper")}>
                         <div className={cx("form-left")}>
-                                <div className={cx("form-group-double") + " row"}>
-                                    <div className={cx("form-group") + " col l-6 m-6 c-12"}>
+                                <div className={cx("form-group-double") + " row-input"}>
+                                    <div className={cx("form-group") + " col-input l-6 m-6 c-12"}>
                                         <label htmlFor="fullname" className={cx("form-label")}>
                                             Your Full Name
                                         </label>
@@ -31,13 +31,13 @@ function OrderForm() {
                                         />
                                         <span className={cx("form-message")}></span>
                                     </div>
-                                    <div className={cx("form-group") + " col l-6 m-6 c-12"}>
-                                        <label htmlFor="fullname" className={cx("form-label")}>
+                                    <div className={cx("form-group") + " col-input l-6 m-6 c-12"}>
+                                        <label htmlFor="email" className={cx("form-label")}>
                                             Email
                                         </label>
                                         <input
-                                            id="fullname"
-                                            name="fullname"
+                                            id="email"
+                                            name="email"
                                             rules="required"
                                             type="text"
                                             placeholder="Email"
@@ -46,14 +46,14 @@ function OrderForm() {
                                         <span className={cx("form-message")}></span>
                                     </div>
                                 </div>
-                                <div className={cx("form-group-double") + " row"}>
-                                    <div className={cx("form-group") + " col l-6 m-6 c-12"}>
-                                        <label htmlFor="fullname" className={cx("form-label")}>
+                                <div className={cx("form-group-double") + " row-input"}>
+                                    <div className={cx("form-group") + " col-input l-6 m-6 c-12"}>
+                                        <label htmlFor="phone-number" className={cx("form-label")}>
                                             Phone number
                                         </label>
                                         <input
-                                            id="fullname"
-                                            name="fullname"
+                                            id="phone-number"
+                                            name="phone-number"
                                             rules="required"
                                             type="text"
                                             placeholder="Ex: 0123456789"
@@ -61,13 +61,13 @@ function OrderForm() {
                                         />
                                         <span className={cx("form-message")}></span>
                                     </div>
-                                    <div className={cx("form-group") + " col l-6 m-6 c-12"}>
-                                        <label htmlFor="fullname" className={cx("form-label")}>
+                                    <div className={cx("form-group") + " col-input l-6 m-6 c-12"}>
+                                        <label htmlFor="quantities" className={cx("form-label")}>
                                             Quantities
                                         </label>
                                         <input
-                                            id="fullname"
-                                            name="fullname"
+                                            id="quantities"
+                                            name="quantities"
                                             rules="required"
                                             type="text"
                                             placeholder="Ex: 1,2,..."
@@ -77,12 +77,12 @@ function OrderForm() {
                                     </div>
                                 </div>
                                 <div className={cx("form-group")}>
-                                        <label htmlFor="fullname" className={cx("form-label")}>
+                                        <label htmlFor="delivery-address" className={cx("form-label")}>
                                             Delivery address
                                         </label>
                                         <input
-                                            id="fullname"
-                                            name="fullname"
+                                            id="delivery-address"
+                                            name="delivery-address"
                                             rules="required"
                                             type="text"
                                             placeholder="Ex: 123 Main Street"
@@ -91,12 +91,12 @@ function OrderForm() {
                                         <span className={cx("form-message")}></span>
                                 </div>
                                 <div className={cx("form-group")}>
-                                        <label htmlFor="fullname" className={cx("form-label")}>
+                                        <label htmlFor="item-description" className={cx("form-label")}>
                                             Item description
                                         </label>
                                         <input
-                                            id="fullname"
-                                            name="fullname"
+                                            id="item-description"
+                                            name="item-description"
                                             rules="required"
                                             type="text"
                                             placeholder="Ex: extra cheese, if nothing then leave this blank"
@@ -105,7 +105,7 @@ function OrderForm() {
                                         <span className={cx("form-message")}></span>
                                 </div>
 
-                                <span className={cx('announcement-texts')}>
+                                <span className={cx('cash-payment-notif')}>
                                     As of now, we only accept cash payments. We apologize for any inconvenience this may cause.
                                 </span>
                             </div>
