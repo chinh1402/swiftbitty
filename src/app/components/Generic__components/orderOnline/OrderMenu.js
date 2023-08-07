@@ -1,12 +1,14 @@
 'use client'
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext, createContext } from "react";
 import classNames from 'classnames/bind';
 import styles from '../../../order-online/orderonline.module.css';
 import menuData from '../../Data__components/ContentData'
+import generateIncreasingArray from "../functions/increasingArr";
+import {dataContext} from "../../../order-online/page.js"
 
 const cx = classNames.bind(styles);
-function OrderMenu() {
-
+function OrderMenu() { 
+  const {dataList, setDataList, summaryStack, setSummaryStack} = useContext(dataContext);
   // handle click select
 
   //flow: click vao header tuong ung => mo ra list tuong ung co tabindex tuong ung bang cach them open
@@ -17,65 +19,75 @@ function OrderMenu() {
   let selectList = document.getElementsByClassName(cx('select-list'))
   let selectValue = document.getElementsByClassName(cx('selected-value'))
 
-  // Set key for li elements in select
-  let k = 1000000;
-  // useState to save value choosing upon click
-  let [chosenValue, setChosenValue] = useState([]);
+  // select Array (parse in value as first param to declare length of array, default = 5)
+  const selectItemArr = generateIncreasingArray();
 
-  let inputField = document.getElementsByClassName(cx('inputField'))
+  // default select header value = 1
+  let existValue
   // gens Ids to assign to checkboxes 
-  const generateCustomId = (index) => `menuitem${index + 1}`;
-
-  // checkbox statuses
-  let [checkBoxStatus, setCheckBoxStatus] = useState([]);
+  const generateCustomId = (index) => `menuitem${index + 1}`; 
 
   // listID to store all the IDs of labels and inputs
   let [listID, setListID] = useState([]);
 
+  // manipulate data to calculate total cost
+
+    const checkBoxHandleChanges = (index, isChecked) => {
+      // set lai data cua dataList
+      setDataList((prevDataList) => {
+        const updatedDataList = [...prevDataList];
+        updatedDataList[index].isChecked = isChecked;
+        return updatedDataList;
+      });
+
+      // set lai data cua summaryStack dua tren data cua isChecked va update state
+      // nen 2 useState nay k lien quan den nhau => co the chay ngang nhau
+      
+    console.log(dataList);
+  };
+
+  const handleSelect = (index, value) => {
+    setDataList((prevDataList) => {
+      const updatedDataList = [...prevDataList];
+      updatedDataList[index].selectedValue = value;
+      return updatedDataList;
+    });
+
+    console.log(dataList);
+    
+    selectValue[index].innerHTML = value;
+    selectList[index].classList.toggle(cx('open'));     
+  };
+
+  // totalCost logic
+
+  // end of totalcost logic
+
   useEffect(() => {
     for (let index=0;index<selectHeader.length;index++) {
 
-      // generate ID roi push vao arr
+      // generate ID to push onto listID (for generating different label id for inputs)
       setListID((prevList) => [...prevList, generateCustomId(index)])
 
-      // gan cho moi header 1 onClick, moi cai click se toggle list tuong ung
+      // each header has an event handler
       selectHeader[index].addEventListener('click', () => {
+        // DOM element is needed, so this cant be refactor to React codes
         selectList[index].classList.toggle(cx('open'));
         selectList[index].focus();
       })
 
+      // when select list is blurred, list is closed by default
       selectList[index].addEventListener('blur', (e) => {
+        // Timeout fix bug double-click header
         setTimeout(() => {
           selectList[index].classList.remove(cx('open'));
         }, 100);
       })
 
-      // Blur xay ra truoc click => open => close (do blur) => open (do click vao header)
-      selectList[index].addEventListener('click', (e) => {
-        if (e.target.value) {
-          setChosenValue(() => {
-            chosenValue[index] = e.target.value;
-            console.log(chosenValue);
-          })
-          // render
-          selectValue[index].innerHTML = e.target.value;
-          selectList[index].classList.toggle(cx('open'));
-          }  
-        }
-      )
 
-      inputField[index].addEventListener('change', (e) => {
-        setCheckBoxStatus(() => {
-          checkBoxStatus[index] = e.target.checked
-          console.log(checkBoxStatus);
-        })
-      })
     }
 
   }, [])
-
-
-    // handle custom checkbox
 
     return (
       <>
@@ -90,6 +102,7 @@ function OrderMenu() {
                           type='checkbox'
                           id={listID[index]}
                           className='inputField'
+                          onChange={(e) => checkBoxHandleChanges(index, e.target.checked)}
                         />
                         <label htmlFor={listID[index]} /> 
                         <span className={cx('img-wrapper')}>
@@ -110,16 +123,26 @@ function OrderMenu() {
                             <div className={cx('quantity-handler')}>
                               <span className={cx('quantity-text')}>Quantity</span>
                               <span className={cx('select')}>
-                                <div className={cx('select-header')}>
-                                  <span className={cx('selected-value')}>1</span>
+                                <div className={cx('select-header')} >
+                                  <span className={cx('selected-value')}>{existValue || 1}</span>
                                   <img src='../images/ar.png' />
                                 </div>
-                                <ul className={cx('select-list')} tabIndex={0}>
-                                  <li key = {k++} className={cx('select-item')} value={1}>1</li>
-                                  <li key = {k++} className={cx('select-item')} value={2}>2</li>
-                                  <li key = {k++} className={cx('select-item')} value={3}>3</li>
-                                  <li key = {k++} className={cx('select-item')} value={4}>4</li>
-                                  <li key = {k++} className={cx('select-item')} value={5}>5</li>
+                                <ul className={cx('select-list')} tabIndex={index}>
+                                  {
+                                    selectItemArr.map((value, i) => {
+                                      return (
+                                        <li 
+                                          key = {i} 
+                                          className={cx('select-item')} 
+                                          value={value}
+                                          onClick={() => handleSelect(index, value)}
+                                          >
+                                            
+                                          {value}
+                                        </li>
+                                      )
+                                    })
+                                  }
                                 </ul>
                               </span>
                             </div>
