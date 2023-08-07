@@ -20,6 +20,7 @@
 .orderonline__menu-list-item {
     padding-left: 15px;
     padding-right: 15px;
+    
 }
 
 .item-wrapper {
@@ -189,6 +190,11 @@
     background: #fff url("../../../public/images/check_24px.png") no-repeat center center;
 }
 
+.get-total-cost {
+    display: none;
+}
+
+
 /* Form handler css */
 
 
@@ -209,10 +215,15 @@
     flex-direction: column;
 }
 
-.form-group.invalid {
+.form-group.invalid input {
+    border-color: #F48B36;
     outline: #F48B36;
+}
+
+.form-group.invalid input::placeholder {
     color: #F48B36;
 }
+
 
 .form-label {
     font-size: 1.8rem;
@@ -246,6 +257,7 @@
     color: #C15803;
     font-size: 1.8rem;
     margin-bottom: 16px;
+    line-height: 2.4rem;
 }
 
 .form-submit { 
@@ -257,6 +269,7 @@
     border: 2px solid #DB8E4F;
     font-size: 1.6rem;
     color: #DB8E4F;
+    margin-top: 12px;
 }
 
 .form-wrapper {
@@ -276,6 +289,77 @@
 }
 
 .form-right {
+    margin-left: 30px;
+    flex-basis: 50%;
+}
+
+.form-right button {
+    cursor: pointer;
+}
+
+.Summary__headline {
+    font-size: 2.4rem;
+    font-weight: 400;
+    margin: 0;
+    line-height: 3.3rem;
+}
+
+.Summary__costs {
+    text-align: right;
+    font-size: 3.2rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 4.4rem;
+}
+
+
+
+/* Summary handler */
+
+.Summary__list {
+    padding-left: 0;
+    list-style-type: none;
+    margin-top: 12px;
+    margin-bottom: 20px;
+}
+
+.Summary__item-name {
+    display: inline-block;
+}
+
+.Summary__list-item {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    letter-spacing: 1.6px;
+    font-weight: 800;
+    text-align: left;
+    text-transform: uppercase;
+    margin: 4px 0;
+}
+
+.Summary__item-price {
+    display: inline-block;
+}
+
+.spacer {
+    position: relative;
+    right: 0;
+    width: 175px;
+    height: 1px;
+    background-color: #000;
+    display: block;
+    margin: 0px 0px 12px auto;
+}
+
+.total-cost {
     display: none;
 }
 
+.Summary__empty {
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 2.2rem;
+}

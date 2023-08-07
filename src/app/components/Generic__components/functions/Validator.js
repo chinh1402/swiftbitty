@@ -20,29 +20,34 @@ export default function Validator(formSelector) {
     //          ko loi => undefined
     let validatorRules = {
         required: function (value) {
-            return value ? undefined : "Vui long nhap truong nay";
+            return value ? undefined : "This field is required";
         },
 
         email: function (value) {
             let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-            return regex.test(value) ? undefined : "Vui long nhap email";    
+            return regex.test(value) ? undefined : "Please enter a valid email address";    
+        },
+
+        phone: function(value) {
+            let regex = /^\d+$/;
+            return (regex.test(value) && value.length <= 13 && value.length >= 4) ? undefined : "Please enter a valid phone number";
         },
 
         min: function (min) {
             return function (value) {
-                return value.length >= min ? undefined : `Vui long nhap mat khau toi thieu ${min} ki tu`;
+                return value.length >= min ? undefined : `Your password must be at least ${min} characters`;
             }
         },
 
         max: function (max) {
             return function (value) {
-                return value.length <= max ? undefined : `Vui long nhap mat khau toi da ${max} ki tu`;
+                return value.length <= max ? undefined : `Your password must be less than ${max} characters`;
             }
         },
 
         confirm: function (value) {
             let passwordValue = formElement.querySelector('[name="password"]').value;
-            return value === passwordValue ? undefined : `Vui long nhap lai mat khau`;
+            return value === passwordValue ? undefined : `Incorrect confirmation password`;
         }
     }
 
@@ -88,13 +93,11 @@ export default function Validator(formSelector) {
                 errorMessage = rule(event.target.value);
                 return rule(event.target.value)
             })
-            console.log(errorState)
             if (errorState) {
                 let formGroupElement = getParent(event.target, cx('form-group'));
                 if (formGroupElement) {
                     formGroupElement.classList.add(cx('invalid'));
-                    let formMessageElement = formGroupElement.querySelector(cx('.form-message'));
-                    console.log(formMessageElement);
+                    let formMessageElement = formGroupElement.querySelector('.' + cx('form-message'));
                     if (formMessageElement) {
                         formMessageElement.innerText = errorMessage;
                     }
@@ -105,7 +108,7 @@ export default function Validator(formSelector) {
 
         function onInputHandler (event) {
             let formGroupElement = getParent(event.target, cx('form-group'));
-            let formMessageElement = formGroupElement.querySelector(cx('.form-message'));
+            let formMessageElement = formGroupElement.querySelector(cx('.' + cx('form-message')));
             if (formGroupElement.classList.contains(cx('invalid'))) {
                 formGroupElement.classList.remove(cx('invalid'));
                 formMessageElement.innerText = '';

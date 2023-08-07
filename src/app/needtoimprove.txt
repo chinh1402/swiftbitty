@@ -19,4 +19,6 @@ Fixed: adding padding-bottom onto list for list to take more space
 
 4. Make arrow function in orderOnline so that It works as intended (scroll 2 3 items at once)
 
+5. Refactor the Summary list so that It works like a stack (It gives the feel of smooth  inn and out while
+picking different foods.. Because When we scale this to 10 items, It gonna be a mess)
 
