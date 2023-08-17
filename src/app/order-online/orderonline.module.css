@@ -4,6 +4,7 @@
 }
 
 .orderonline__wrapper {
+    position: relative;
     margin-top: 80px;
 }
 
@@ -362,4 +363,61 @@
     font-size: 1.6rem;
     font-weight: 500;
     line-height: 2.2rem;
+}
+
+.orderonline__arrowComponent-wrapper {
+    position: absolute;
+    right: 0;
+    top: -60px;
+}
+
+.right-arrow-icon {
+    cursor: pointer;
+    margin-left: 12px;
+}
+
+.left-arrow-icon {
+    cursor: pointer;
+}
+/*  */
+@media (max-width:1023px) {
+        .select-header {
+            min-width: 72px;
+            padding: 8px;
+        }
+
+        .select-item {
+            padding: 8px;
+        }
+
+        .form-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .form-left {
+            flex-basis: 100%;
+
+        }
+
+        .form-right {
+            flex-basis: 100%;
+            margin-left: unset;
+            margin-bottom: 40px
+        };
+}
+
+@media (max-width: 739px) {
+    .mobile-padding {
+        padding: 20px;
+    }
+
+    .select-list {
+        --select-list-height: 76px;
+    }
+
+    .item-price {
+        position: relative;
+        top: 8px;
+    }
 }

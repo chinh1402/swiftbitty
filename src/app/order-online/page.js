@@ -20,7 +20,7 @@ export default function OrderOnline() {
         price: data.totalPrice()
       }))
     );
-
+    const [summaryStack, setSummaryStack] = useState(['_']);
     const [totalCost, setTotalCost] = useState(0);
 
     const calculateTotalCost = () => {
@@ -34,14 +34,13 @@ export default function OrderOnline() {
     };
   
     useEffect(() => {
+      // each time dataList update, Total cost changes
       calculateTotalCost();
     }, [dataList]);
 
-    const [summaryStack, setSummaryStack] = useState([]);
-
     return (
       <dataContext.Provider value={{dataList, setDataList, totalCost, summaryStack, setSummaryStack}} >
-        <div className="grid wide">
+        <div className={cx("mobile-padding") + " grid wide"}>
           <h1 className={cx("orderOnline__headline") + " heading"}>Order online</h1>
           <OrderMenu />
           <OrderForm />

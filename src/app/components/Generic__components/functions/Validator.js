@@ -94,8 +94,13 @@ export default function Validator(formSelector) {
                 return rule(event.target.value)
             })
             if (errorState) {
-                let formGroupElement = getParent(event.target, cx('form-group'));
+                let inputElement = event.target;
+                let formGroupElement = getParent(inputElement, cx('form-group'));
+                // added focus so that people gotta fill out the form properly
+                inputElement.focus();
+
                 if (formGroupElement) {
+
                     formGroupElement.classList.add(cx('invalid'));
                     let formMessageElement = formGroupElement.querySelector('.' + cx('form-message'));
                     if (formMessageElement) {
@@ -129,7 +134,8 @@ export default function Validator(formSelector) {
                 if (typeof this.onSubmit === 'function') {
                     let enableInputs = formElement.querySelectorAll('[name]');
                     let formData = Array.from(enableInputs).reduce((values, input) => {
-                        return (values[input.name] = input.value) && values
+                        values[input.name] = input.value;
+                        return values
                     }, {})
                     this.onSubmit(formData);
                 } 

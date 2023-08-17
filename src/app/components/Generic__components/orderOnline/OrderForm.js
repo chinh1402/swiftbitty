@@ -3,24 +3,48 @@ import React, { useState, useEffect, useContext } from 'react';
 import classNames from 'classnames/bind';
 import styles from '../../../order-online/orderonline.module.css';
 import Validator from '../functions/Validator.js';
-import { dataContext } from "../../../order-online/page.js"
+import { dataContext } from "../../../order-online/page.js";
 
 const cx = classNames.bind(styles);
-function OrderForm() {  
-    const {dataList, totalCost} = useContext(dataContext);
-    let itemIndex = 1;
 
-    useEffect(() => {
-        let form = new Validator("#register-form");
-        form.onSubmit = function(dataValue) {
-            console.log(dataValue);
-        }
-    }, [])
+function OrderForm() {  
+    
+    
+    
+
+        let {dataList, totalCost, summaryStack} = useContext(dataContext);
+        let itemIndex = 1;
+
+        const originColor = 'black';
+        const [emptySummaryListColor, setEmptySummaryListColor] = useState(originColor);
+        useEffect(() => {
+            let form = new Validator("#order-form");
+            form.onSubmit = function(dataValue) {
+                if (totalCost) {
+                    let orderData = dataList.filter((value) => value.isChecked === true )
+                    let orderDetail = {
+                        orderData,
+                        totalCost,
+                    }
+                    dataValue = {...dataValue, orderDetail};
+                    console.log(dataValue)
+                }
+                else {
+                    // Write code here to handle insufficient value
+                    setEmptySummaryListColor("#C15803");
+                    console.log("insufficient value")
+                }
+            }
+        }, [totalCost])
+
+        useEffect(() => {
+            setEmptySummaryListColor(originColor);
+        }, [dataList])
 
     return (
         <>
             <div className={cx("form-container")}>
-                <form action="" method="POST" className={cx("form")} id="register-form">
+                <form action="" method="POST" className={cx("form")} id="order-form">
                     <div className={cx("form-wrapper")}>
                         <div className={cx("form-left")}>
                                 <div className={cx("form-group-double") + " row-input"}>
@@ -105,25 +129,29 @@ function OrderForm() {
                                 <h2 className={cx('Summary__headline')}>Order Summary</h2>
                                 <ul className={cx('Summary__list')}>
                                     {
-                                        dataList.map((value, index) => {
-                                            if (value.isChecked) {
-                                                return (
-
+                                        // '_' to keep the array not empty => for it to always run
+                                        summaryStack.map((summaryIndex,index) => {
+                                            if (summaryIndex != '_')
+                                            return (
                                                     <li key={index} className={cx('Summary__list-item')}>
                                                         <div className={cx('Summary__item-name-container')}>
                                                             <span className={cx('Summary__item-name')}> 
-                                                                {itemIndex++}. {value.name}  {value.selectedValue == 1 ? '' : '* ' + value.selectedValue}
+                                                                {itemIndex++}. {dataList[summaryIndex].name}  {dataList[summaryIndex].selectedValue == 1 ? '' : '* ' + dataList[summaryIndex].selectedValue}
                                                             </span>
                                                         </div>
-                                                        <span className={cx('Summary__item-price')}>{value.price * value.selectedValue}$</span>
+                                                        <span className={cx('Summary__item-price')}>{dataList[summaryIndex].price * dataList[summaryIndex].selectedValue}$</span>
                                                     </li>
                                                 )
-                                            } else if (totalCost == 0 && index == dataList.length-1) {
-                                                return (
-                                                    <span key = {9} className={cx('Summary__empty')}>Please tick the checkbox to choose your meal on top left of each item</span>
+                                            else if (totalCost == 0)
+                                            return (
+                                                <span 
+                                                    key = {9} 
+                                                    className={cx('Summary__empty')}
+                                                    style={{ color: emptySummaryListColor }}
+                                                    >Please tick the checkbox to choose your meal on top left of each item</span>
                                                 )
                                             }
-                                        })
+                                        )
                                     }
                                     
                                 </ul>
