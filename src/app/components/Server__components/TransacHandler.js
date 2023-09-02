@@ -1,8 +1,7 @@
-import config from 'config';
+
 import moment from 'moment';
 import querystring from 'qs';
 import crypto from 'crypto';
-
 function sortObject(obj) {
 	let sorted = {};
 	let str = [];
@@ -18,19 +17,21 @@ function sortObject(obj) {
     }
     return sorted;
 }
-export default async function handler(amount, orderInfo) {
-    const tmnCode = config.get('vnp_TmnCode');
-    const secretKey = config.get('vnp_HashSecret');
-    let vnpUrl = config.get('vnp_Url');
-    const returnUrl = config.get('vnp_ReturnUrl');
+export default async function handler(amount, orderInfo, returnUrl) {
+    // Fetch static data from /public
+    const resConfig = await fetch('../../JsonData/TransacConfig.json');
+    const configData = await resConfig.json();
 
+    const tmnCode = configData.vnp_TmnCode;
+    const secretKey = configData.vnp_HashSecret;
+    let vnpUrl = configData.vnp_Url;
     const date = new Date();
-
     const createDate = moment(date).format('YYYYMMDDHHmmss');
     const orderId = moment(date).format('HHmmss');
 
-    const res = await fetch("https://api.ipify.org/?format=json");
-    const ipAddrParsedJSON = await res.json();
+    // Get client side ip using api.ipify 
+    const resIP = await fetch("https://api.ipify.org/?format=json");
+    const ipAddrParsedJSON = await resIP.json();
     const ipAddr = ipAddrParsedJSON.ip;
 
     const bankCode = "";
@@ -50,14 +51,13 @@ export default async function handler(amount, orderInfo) {
     vnp_Params['vnp_TxnRef'] = orderId;
     vnp_Params['vnp_OrderInfo'] = orderInfo;
     vnp_Params['vnp_OrderType'] = orderType;
-    vnp_Params['vnp_Amount'] = amount * 100;
+    vnp_Params['vnp_Amount'] = amount * 100 * 23000;
     vnp_Params['vnp_ReturnUrl'] = returnUrl;
     vnp_Params['vnp_IpAddr'] = ipAddr;
     vnp_Params['vnp_CreateDate'] = createDate;
     if (bankCode !== null && bankCode !== '') {
         vnp_Params['vnp_BankCode'] = bankCode;
     }
-
     vnp_Params = sortObject(vnp_Params);
 
     const signData = querystring.stringify(vnp_Params, { encode: false });
@@ -67,5 +67,6 @@ export default async function handler(amount, orderInfo) {
     vnp_Params['vnp_SecureHash'] = signed;
     
     vnpUrl += '?' + querystring.stringify(vnp_Params, { encode: false });
-    console.log(vnpUrl);
+    
+    window.location.href = vnpUrl;
 }

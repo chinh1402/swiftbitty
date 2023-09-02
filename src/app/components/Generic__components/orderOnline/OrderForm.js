@@ -4,15 +4,15 @@ import classNames from 'classnames/bind';
 import styles from '../../../order-online/orderonline.module.css';
 import Validator from '../functions/Validator.js';
 import { dataContext } from "../../../order-online/page.js";
-import TransacHandler from '../../Server__components/TransacHandler.js';
-
+import TransacHandler from '../../Server__components/TransacHandler';
+import GetCurrentSlug from './orderOnline__function/GetCurrentSlug';
 const cx = classNames.bind(styles);
 
 function OrderForm() {  
+        const slug = GetCurrentSlug();
 
         let {dataList, totalCost, summaryStack} = useContext(dataContext);
         let itemIndex = 1;
-
         const originColor = 'black';
         const [emptySummaryListColor, setEmptySummaryListColor] = useState(originColor);
         useEffect(() => {
@@ -25,9 +25,15 @@ function OrderForm() {
                         totalCost,
                     }
                     dataValue = {...dataValue, orderDetail};
-                    console.log(dataValue)
-
-                    // TransacHandler(dataValue.orderDetail.totalCost);
+                    let foodNames = orderData.map((value) => value.name + "*" + value.selectedValue);
+                    let orderInfo = "Mua hang tai Swiftbitty, thanh toan cho: ";
+                    for (let i = 0; i < foodNames.length;i++) {
+                        orderInfo += foodNames[i] + " ";
+                    }
+                    if (orderInfo) {
+                        console.log(slug);
+                        TransacHandler(orderDetail.totalCost, orderInfo, slug);
+                    }
                 }
                 else {
                     // Write code here to handle insufficient value

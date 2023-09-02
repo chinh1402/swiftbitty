@@ -40,4 +40,6 @@ picking different foods.. Because When we scale this to 10 items, It gonna be a 
     
 12. Change the name of the order instead of selectedValue => Quantity
 
-13. Using postman to handle datas then store data on a remote server to run my codes
+13. Use vnp IPN to tell customers that the order has been made
+
+14. Figure out why must I have to use useEffect and useState to actually make GetCurrentSlug works?

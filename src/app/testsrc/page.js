@@ -1,13 +1,26 @@
-import TransacHandler from "../components/Server__components/TransacHandler.js";
-TransacHandler(500000, "Thanh toan cho don hang abcxyz");
+'use client'
+import React, { useState, useEffect } from 'react';
+import handler from '../components/Server__components/TransacHandler';
+handler(10, 'brrr');
+function Page() {
+  const [data, setData] = useState([]);
 
-export default async function Page() {
-    const res = await fetch("https://api.ipify.org/?format=json");
-    const ipaddr = await res.json();
-    const ip = ipaddr.ip;
-    return (
-        <>
-            <h1>${ip}</h1>
-        </>
-    )
+  useEffect(() => {
+    fetch('../../JsonData/TransacConfig.json')
+      .then(response => response.json())
+      .then(jsonData => {
+            // console.log(jsonData);
+            setData(jsonData)
+        })
+      .catch(error => console.error('Error fetching data:', error));  
+  }, []);
+
+  // Now you can use the 'data' state in your component
+  return (
+    <div>
+      <h1>nothing</h1>
+    </div>
+  );
 }
+
+export default Page;
