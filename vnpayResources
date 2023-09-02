@@ -1,0 +1,11 @@
+1. https://sandbox.vnpayment.vn/apis/files/VNPAY%20Payment%20Gateway_Techspec%202.1.0-VN.pdf
+Doc for vnpay payment gateway general infos
+2. https://sandbox.vnpayment.vn/apis/docs/thanh-toan-pay/pay.html#cac-buoc-can-xu-ly-PAY
+Doc with steps to setup
+3. https://sandbox.vnpayment.vn/apis/downloads/#code-t%C3%ADch-h%E1%BB%A3p-cho-opensource
+Doc that supports open source (Woocommerce)
+4. https://www.vnpayqr.vn/dich-vu-vnpay-qr/?fbclid=IwAR0305ezd4iDoAUDLbkVJ2OJK-T4guQ5-kR4nv9xBJ6Vj5Bk0Q9CtDd-G9w
+Vnpay Service
+
+5. Razorpay is an indian Online Transaction service that MIGHT offer the cheapest (I hadnt done any research yet, but each
+transac is about 1.8% + 2.5 rupee ~ 700VND) 

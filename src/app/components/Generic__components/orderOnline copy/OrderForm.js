@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 import styles from '../../../order-online/orderonline.module.css';
 import Validator from '../functions/Validator.js';
 import { dataContext } from "../../../order-online/page.js";
-import TransacHandler from '../../Server__components/TransacHandler.js';
+import TransacHandler from '../../Server__components/TransacHandler.js/index.js';
 
 const cx = classNames.bind(styles);
 
@@ -27,7 +27,7 @@ function OrderForm() {
                     dataValue = {...dataValue, orderDetail};
                     console.log(dataValue)
 
-                    // TransacHandler(dataValue.orderDetail.totalCost);
+                    // TransacHandler(dataValue.orderDetail.totalCost, datavalue.orderDetails);
                 }
                 else {
                     // Write code here to handle insufficient value

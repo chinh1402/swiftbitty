@@ -11,7 +11,6 @@ const cx = classNames.bind(styles);
 
 
 const ArrowComponent = ({direction, onArrowClick, leftArrowVisible, rightArrowVisible }) => {
-  const [menuScroll, setMenuScroll] = useState(0);
   const [itemWidth, setItemWidth] = useState(null);
   const [menuList, setMenuList] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
@@ -40,26 +39,18 @@ const ArrowComponent = ({direction, onArrowClick, leftArrowVisible, rightArrowVi
       itemsToScroll = 1; // Mobile
     }
 
-    setMenuScroll(() => {
-      const scrollDistance = direction === 'Right' ? itemsToScroll * itemWidth : -itemsToScroll * itemWidth;
-      const newScroll = menuList.scrollLeft + scrollDistance;
-      const maxScroll = menuList.scrollWidth - menuList.clientWidth; // Maximum allowable scroll position
-      const minScroll = 0; // Minimum allowable scroll position
-      const clampedScroll = Math.max(minScroll, Math.min(newScroll, maxScroll));
-      menuList.scrollTo({ left: clampedScroll, behavior: 'smooth' });
+    const scrollDistance = direction === 'Right' ? itemsToScroll * itemWidth : -itemsToScroll * itemWidth;
+    const newScroll = menuList.scrollLeft + scrollDistance;
+    const maxScroll = menuList.scrollWidth - menuList.clientWidth; // Maximum allowable scroll position
+    const minScroll = 0; // Minimum allowable scroll position
+    const clampedScroll = Math.max(minScroll, Math.min(newScroll, maxScroll));
+    menuList.scrollTo({ left: clampedScroll, behavior: 'smooth' });
+    
+    setTimeout(() => {
+      setIsScrolling(false);
+      onArrowClick(clampedScroll, maxScroll);
+    }, 500); 
 
-      // 3 states
-      // 1. newScroll <= 0 Right opacity 1, left opacity 0;
-      // 2. newScroll >= maxScroll: Right opacity 0, left opacity 1;
-      // 3. 0 < newScroll < maxScrool: Right opacity 1, left opacity 1;
-      
-      setTimeout(() => {
-        setIsScrolling(false);
-        onArrowClick(clampedScroll, maxScroll);
-      }, 500); 
-
-      return clampedScroll;
-    });
 
   };
   const arrowIcon = direction === 'Right' ? RightArrowIcon : LeftArrowIcon;

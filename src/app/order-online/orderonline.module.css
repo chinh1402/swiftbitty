@@ -365,6 +365,8 @@
     line-height: 2.2rem;
 }
 
+/* menu arrow css */
+
 .orderonline__arrowComponent-wrapper {
     position: absolute;
     right: 0;
@@ -379,7 +381,9 @@
 .left-arrow-icon {
     cursor: pointer;
 }
-/*  */
+
+/* resolution < 1023px: mobile, tablet */
+
 @media (max-width:1023px) {
         .select-header {
             min-width: 72px;
@@ -407,6 +411,7 @@
         };
 }
 
+/* mobile */
 @media (max-width: 739px) {
     .mobile-padding {
         padding: 20px;
@@ -419,5 +424,9 @@
     .item-price {
         position: relative;
         top: 8px;
+    }
+
+    .item-wrapper {
+        border-radius: 16px;
     }
 }

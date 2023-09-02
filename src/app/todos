@@ -1,13 +1,14 @@
-OrderOnline, Reservation
+OrderOnline, Reservation (in progress)
 Adding VNpay Function using datas provided from customers (backend oriented)
+Priority: fun
 
-required: API handler
+required: API handler (other than VNpay handling)
 Priority: medium
 
 Removing those About-us, Contact options on header
 Priority: medium
 
-Reservation
+Reservation (in progress)
 Making a page for people to reserve their seats
 Priority: high
 

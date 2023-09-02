@@ -1,5 +1,5 @@
-import Header from "./components/Main__components/Header";
-import Footer from "./components/Main__components/Footer";
+import Header from "./components/Layout__components/Header";
+import Footer from "./components/Layout__components/Footer";
 import "./globals.css";
 import "./css/grid.css";
 import "./css/responsive.css";  
@@ -13,9 +13,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" >
       <body suppressHydrationWarning={true}>
-        <Header />
+        {/* <Header /> */}
         {children}
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   )
