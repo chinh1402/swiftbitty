@@ -1,6 +1,6 @@
 'use client'
 import classNames from 'classnames/bind';
-import styles from '../../../order-online/orderonline.module.css';
+import styles from '../../../reservation/reservation.module.css';
 
 const cx = classNames.bind(styles);
 
@@ -33,6 +33,11 @@ export default function Validator(formSelector) {
             return (regex.test(value) && value.length <= 13 && value.length >= 4) ? undefined : "Please enter a valid phone number";
         },
 
+        numberpeople: function(value) {
+            let regex = /^\d+$/;
+            return (regex.test(value) && value.length <= 2 && value.length >= 0) ? undefined : "Please enter a valid number of people";
+        },
+
         min: function (min) {
             return function (value) {
                 return value.length >= min ? undefined : `Your password must be at least ${min} characters`;
@@ -44,6 +49,7 @@ export default function Validator(formSelector) {
                 return value.length <= max ? undefined : `Your password must be less than ${max} characters`;
             }
         },
+
 
         confirm: function (value) {
             let passwordValue = formElement.querySelector('[name="password"]').value;
@@ -96,10 +102,10 @@ export default function Validator(formSelector) {
             if (errorState) {
                 let inputElement = event.target;
                 let formGroupElement = getParent(inputElement, cx('form-group'));
-                // added focus so that people gotta fill out the form properly
-                inputElement.focus();
-
                 if (formGroupElement) {
+
+                    // Scroll if error (last error input, UX)
+                    inputElement.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
 
                     formGroupElement.classList.add(cx('invalid'));
                     let formMessageElement = formGroupElement.querySelector('.' + cx('form-message'));

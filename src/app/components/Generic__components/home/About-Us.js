@@ -1,4 +1,7 @@
 import React from 'react';
+import Image from 'next/image';
+import aboutImg from 'public/images/about-us.jpg';
+import Link from 'next/link';
 
 function About() {
     let nullurl
@@ -16,9 +19,9 @@ function About() {
                   fries, and salads that hit the spot. Come see why sometimes,
                   less really is more.
                 </p>
-                <a href= {nullurl} className="about-us__readmore">
+                {/* <Link href= "#" className="about-us__readmore" scroll = {true}>
                   Read more
-                </a>
+                </Link> */}
               </div>
             </div>
             <div className="about-us__quote">
@@ -32,10 +35,14 @@ function About() {
             </div>
             <div className="about-us-offset c-o-1" />
             <div className="col l-5 m-5 c-12">
-              <img
-                src="../images/about-us.jpg"
-                alt=""
+              <Image
+                src={aboutImg}
+                alt="A cheef pounding the dough"
                 className="about-us__image"
+                style={{
+                  maxWidth: "100%",
+                  height: "auto"
+                }}
               />
             </div>
           </div>

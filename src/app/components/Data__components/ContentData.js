@@ -3,7 +3,7 @@ const contentData = [
         firstLine: 'This course is available for lunch, dinner',
         comboName: 'Quick bite',
         comboDescription: 'Experience the Quick Bites combo - a main dish, Loaded Fries, and a drink, crafted to satisfy your cravings with every delicious bite.',
-        comboImageUrl: '../images/order.png',
+        comboImageUrl: '/images/order.png',
         comboDetailsItems: [
             {
                 name: 'Classic Cheeseburger',
@@ -34,7 +34,7 @@ const contentData = [
         firstLine: 'THIS COURSE IS AVAILABLE FOR BREAKFAST, LUNCH, DINNER',
         comboName: 'Fresh & flavorful',
         comboDescription: 'Savor freshness and flavor in every bite with our mouth-watering Fresh & Flavorful combo - a main, side salad, and drink crafted from locally-sourced ingredients.',
-        comboImageUrl: '../images/order2.png',
+        comboImageUrl: '/images/order2.png',
         comboDetailsItems: [
             {
                 name: 'Grilled Chicken Salad',
@@ -65,7 +65,7 @@ const contentData = [
         firstLine: 'THIS COURSE IS AVAILABLE FOR LUNCH, DINNER',
         comboName: 'Value Meals',
         comboDescription: 'Get unbeatable value and taste with our Value Meals combo - featuring our most popular mains, paired with a side and drink, all at an affordable price.',
-        comboImageUrl: '../images/order3.png',
+        comboImageUrl: '/images/order3.png',
         comboDetailsItems: [
             {
                 name: 'Cheesy Chicken Quesadilla Combo',

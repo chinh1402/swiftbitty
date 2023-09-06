@@ -1,4 +1,5 @@
 'use client'
+import Image from "next/image";
 import React, { useState, useEffect, useContext, createContext } from "react";
 import classNames from 'classnames/bind';
 import styles from '../../../order-online/orderonline.module.css';
@@ -6,6 +7,7 @@ import menuData from '../../Data__components/ContentData'
 import generateIncreasingArray from "../functions/increasingArr";
 import {dataContext} from "../../../order-online/page.js"
 import ArrowComponent from "../functions/ArrowComponent";
+import { images } from "../../../../../next.config";
 
 
 const cx = classNames.bind(styles);
@@ -64,7 +66,7 @@ function OrderMenu() {
   const handleSelect = (index, value) => {
     setDataList((prevDataList) => {
       const updatedDataList = [...prevDataList];
-      updatedDataList[index].selectedValue = value;
+      updatedDataList[index].quantity = value;
       return updatedDataList;
     });
 
@@ -129,6 +131,7 @@ function OrderMenu() {
           <ul className={cx('orderonline__menu-list') + ' row'}>
             {
               menuData.map((data, index) => {
+                let imageSrc = data.comboImageUrl;
                 return (
                   <li key={index} className={cx('orderonline__menu-list-item') + ' col l-4 m-6 c-12'}>
                     <div className={cx('item-wrapper')}>
@@ -140,7 +143,19 @@ function OrderMenu() {
                         />
                         <label htmlFor={listID[index]} /> 
                         <span className={cx('img-wrapper')}>
-                          <img src={data.comboImageUrl} className={cx('img')}></img>
+                          <Image 
+                          alt="ComboImage"
+                          src={imageSrc}
+                          // specify width and height to get the aspect ratio
+                          width={308}
+                          height={210}
+                          style={{
+                            width: '100%',
+                            height: 'auto',
+                          }}
+                          priority={true}
+                          />
+                          {/* <img src={imageSrc} className={cx('img')}></img> */}
                         </span>
                         <div className={cx('orderonline__details-wrapper')}>
                           <h3 className={cx('item-headline')}>

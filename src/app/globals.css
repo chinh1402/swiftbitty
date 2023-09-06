@@ -72,6 +72,10 @@ h1,h2,h3,h4,h5,.header__logo, .about-us__quote {
   line-height: 6.9rem;
 }
 
+.display-none {
+  display: none;
+}
+
 /* Header */
 
 .header {
@@ -140,6 +144,12 @@ h1,h2,h3,h4,h5,.header__logo, .about-us__quote {
 }
 
 /* hero section */
+.hero-section {
+  position: relative;
+  padding-top: 60%;
+  display: block;
+  margin-top: 80px;
+}
 
 .hero {
   display: block;
@@ -216,6 +226,7 @@ h1,h2,h3,h4,h5,.header__logo, .about-us__quote {
 
 .menu__heading {
   text-align: center;
+  padding: 0 20px;
 }
 
 .menu__combos-list {

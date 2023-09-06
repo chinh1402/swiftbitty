@@ -20,12 +20,12 @@ const Footer = () => {
             </a>
           </li>
           <li className="footer__list-item">
-            <Link href="/reservation" className="footer__list-item-link">
+            <Link href="/reservation" className="footer__list-item-link" prefetch = {true}>
               Make a reservation
             </Link>
           </li>
           <li className="footer__list-item">
-            <Link href="/order-online" className="footer__list-item-link">
+            <Link href="/order-online" className="footer__list-item-link" prefetch = {true}>
               Order online
             </Link>
           </li>
@@ -59,7 +59,7 @@ const Footer = () => {
           </a>
         </div>
         <div className="footer__logo-copyright">
-          <Link href="/" className="header__logo">
+          <Link href="/" className="header__logo" prefetch = {true}>
             <span className="header__logo-letter primary-color">S</span>.
           </Link>
           <div className="footer__copyright">

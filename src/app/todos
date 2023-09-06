@@ -1,8 +1,7 @@
-Removing those About-us, Contact options on header
-Priority: medium
+You can now eliglibly deploy
 
-Reservation (in progress)
-Making a page for people to reserve their seats
-Priority: high
+Things to do after (must, because you used vnpay)
 
-
+Do some NextJS server action to store + fetch files from static public assets (this is not stores on server, so you 
+can deploy it first)
+Research onto returnurl and ipnURL

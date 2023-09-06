@@ -1,16 +1,33 @@
+'use client'
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import React from 'react';
+import Image from 'next/image';
+import contactImg from 'public/images/visit-us.jpg';
 
 function Contact() {
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => {
+      setHydrated(true);
+  }, []);
+  if (!hydrated) {
+      // Returns null on first render, so the client and server match
+      return null;
+  }
+
     return (
         <div id ="contact" className="contact">
         <div className="grid wide">
           <div className="contact-wrapper row">
             <div className="col l-6 m-6 c-12">
-              <img
-                src="../images/visit-us.jpg"
-                alt=""
+              <Image
+                src={contactImg}
+                alt="Picture of the exterior of the restaurant"
                 className="contact__image"
+                style={{
+                  maxWidth: "100%",
+                  height: "auto"
+                }}
               />
             </div>
             <span className="contact-offset c-o-1" />

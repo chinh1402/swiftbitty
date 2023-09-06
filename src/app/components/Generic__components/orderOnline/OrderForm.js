@@ -2,10 +2,10 @@
 import React, { useState, useEffect, useContext } from 'react';
 import classNames from 'classnames/bind';
 import styles from '../../../order-online/orderonline.module.css';
-import Validator from '../functions/Validator.js';
+import Validator from '../functions/ValidatorOrderOnline.js';
 import { dataContext } from "../../../order-online/page.js";
 import TransacHandler from '../../Server__components/TransacHandler';
-import GetCurrentSlug from './orderOnline__function/GetCurrentSlug';
+import GetCurrentSlug from './orderOnline__function/GetCurrentPath';
 const cx = classNames.bind(styles);
 
 function OrderForm() {  
@@ -25,13 +25,12 @@ function OrderForm() {
                         totalCost,
                     }
                     dataValue = {...dataValue, orderDetail};
-                    let foodNames = orderData.map((value) => value.name + "*" + value.selectedValue);
+                    let foodNames = orderData.map((value) => value.name + "*" + value.quantity);
                     let orderInfo = "Mua hang tai Swiftbitty, thanh toan cho: ";
                     for (let i = 0; i < foodNames.length;i++) {
                         orderInfo += foodNames[i] + " ";
                     }
                     if (orderInfo) {
-                        console.log(slug);
                         TransacHandler(orderDetail.totalCost, orderInfo, slug);
                     }
                 }
@@ -142,10 +141,10 @@ function OrderForm() {
                                                     <li key={index} className={cx('Summary__list-item')}>
                                                         <div className={cx('Summary__item-name-container')}>
                                                             <span className={cx('Summary__item-name')}> 
-                                                                {itemIndex++}. {dataList[summaryIndex].name}  {dataList[summaryIndex].selectedValue == 1 ? '' : '* ' + dataList[summaryIndex].selectedValue}
+                                                                {itemIndex++}. {dataList[summaryIndex].name}  {dataList[summaryIndex].quantity == 1 ? '' : '* ' + dataList[summaryIndex].quantity}
                                                             </span>
                                                         </div>
-                                                        <span className={cx('Summary__item-price')}>{dataList[summaryIndex].price * dataList[summaryIndex].selectedValue}$</span>
+                                                        <span className={cx('Summary__item-price')}>{dataList[summaryIndex].price * dataList[summaryIndex].quantity}$</span>
                                                     </li>
                                                 )
                                             else if (totalCost == 0)

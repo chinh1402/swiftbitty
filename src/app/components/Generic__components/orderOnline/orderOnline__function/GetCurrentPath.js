@@ -2,19 +2,19 @@
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
-export default function GetCurrentSlug() {
-    const [slug, setSlug] = useState(null);
+export default function GetCurrentPath() {
+    const [Path, setPath] = useState(null);
     const pathname = usePathname();
 
     useEffect(() => {
         const fetchData = async () => {
             let res = await fetch("../../../../../Jsondata/DomainName.json");
             let domainParsed = await res.json();
-            setSlug(domainParsed.domain + pathname);
+            setPath(domainParsed.domain + pathname);
         };
 
         fetchData();
     }, [pathname]);
 
-    return slug;
+    return Path;
 }

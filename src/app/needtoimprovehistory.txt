@@ -15,31 +15,34 @@ unintended
 
 Fixed: adding padding-bottom onto list for list to take more space
 
-4. Make arrow function in orderOnline so that It works as intended (scroll 2 3 items at once) 
+*4. Make arrow function in orderOnline so that It works as intended (scroll 2 3 items at once) 
 
 *5. Refactor the Summary list so that It works like a stack (It gives the feel of smooth  inn and out while
 picking different foods.. Because When we scale this to 10 items, It gonna be a mess) 
 
 => Adding SummaryList useState variable to handle Summary items stacking
 
-6. When proceed to checkout as a phone user, you don't know that some fields need to be filled (required) 
+*6. When proceed to checkout as a phone user, you don't know that some fields need to be filled (required) 
 - Suggested focussing onto input fields that seeing errors (which has classList of invalid)
+- changed to scrollintoView due to focus bug
 
 => Added as suggested; adding 2 lines onto Validator which handle the case
 
-7. Adding VNpay Function using datas provided from customers (backend oriented)
+*7. Adding VNpay Function using datas provided from customers (backend oriented)
 
 *8. When customers hasnt choosed the menu item yet, highlight text (orderForm onSubmit block code)
 => Added another useEffect to handle changing in dataList
 
-9. Using <Image> components from Next to optimise images (cause it is loading slow on mobile for no reason)
+*9. Using <Image> components from Next to optimise images (cause it is loading slow on mobile for no reason)
 
 *10. Adding margin-left: 12px onto forward arrow to actually seperate those
 
 *11. Flipping arrows
     
-12. Change the name of the order instead of selectedValue => Quantity
+*12. Change the name of the order instead of selectedValue => Quantity
 
 13. Use vnp IPN to tell customers that the order has been made
 
 14. Figure out why must I have to use useEffect and useState to actually make GetCurrentSlug works?
+
+15. If you clicked too fast onto hamburgermenu, it is expected to bugged out, cant really fix it

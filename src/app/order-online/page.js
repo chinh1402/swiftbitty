@@ -16,7 +16,7 @@ export default function OrderOnline() {
       menuData.map((data) => ({
         name: data.comboName,
         isChecked: false,
-        selectedValue: 1,
+        quantity: 1,
         price: data.totalPrice()
       }))
     );
@@ -27,7 +27,7 @@ export default function OrderOnline() {
       let total = 0;
       dataList.forEach((data) => {
         if (data.isChecked) {
-          total += data.selectedValue * data.price;
+          total += data.quantity * data.price;
         }
       });
       setTotalCost(total);
