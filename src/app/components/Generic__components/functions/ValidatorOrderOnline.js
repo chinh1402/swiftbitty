@@ -1,6 +1,6 @@
 'use client'
 import classNames from 'classnames/bind';
-import styles from '../../../order-online/orderonline.module.css';
+import styles from 'src/app/order-online/orderonline.module.css';
 
 const cx = classNames.bind(styles);
 

@@ -1,6 +1,6 @@
 'use client'
 import classNames from 'classnames/bind';
-import styles from '../../../reservation/reservation.module.css';
+import styles from 'src/app/reservation/reservation.module.css';
 
 const cx = classNames.bind(styles);
 

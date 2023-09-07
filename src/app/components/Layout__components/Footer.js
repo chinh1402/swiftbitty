@@ -1,6 +1,11 @@
 "use client";
+import Image from 'next/image';
 import Link from 'next/link';
-import idreturn from '../Generic__components/functions/idreturn';
+import facebookIcon from 'public/images/facebook.svg';
+import twitterIcon from 'public/images/twitter.svg';
+import instaIcon from 'public/images/insta.svg';
+import GetCurrentSlug from '../Generic__components/functions/GetCurrentSlug';
+import isHomePage from '../Generic__components/functions/isHomePage';
 
 const Footer = () => {
   let nullurl
@@ -15,7 +20,10 @@ const Footer = () => {
             </Link>
           </li>
           <li className="footer__list-item">
-            <a href={idreturn("#about")} className="footer__list-item-link">
+            <a 
+            href='#about'
+            className= {isHomePage(GetCurrentSlug()) ? "footer__list-item-link" : "display-none"}
+            >
               About us
             </a>
           </li>
@@ -30,29 +38,32 @@ const Footer = () => {
             </Link>
           </li>
           <li className="footer__list-item">
-            <a href={idreturn("#menu")} className="footer__list-item-link">
+            <a 
+            href="#menu"
+            className= {isHomePage(GetCurrentSlug()) ? "footer__list-item-link" : "display-none"}
+            >
               Our menu combos
             </a>
           </li>
         </ul>
         <div className="footer__socials">
           <a href={nullurl} className="social-item-link">
-            <img
-              src="../images/insta.svg"
+            <Image
+              src={instaIcon}
               alt=""
               className="footer__socials-item footer__socials-instagram"
             />
           </a>
           <a href={nullurl} className="social-item-link">
-            <img
-              src="../images/facebook.svg"
+            <Image
+              src={facebookIcon}
               alt=""
               className="footer__socials-item footer__socials-facebook"
             />
           </a>
           <a href={nullurl} className="social-item-link">
-            <img
-              src="../images/twitter.svg"
+            <Image
+              src={twitterIcon}
               alt=""
               className="footer__socials-item footer__socials-twitter"
             />
@@ -63,7 +74,7 @@ const Footer = () => {
             <span className="header__logo-letter primary-color">S</span>.
           </Link>
           <div className="footer__copyright">
-            Copyright 2023 © Chinh’s designs
+            Copyright 2023 © Chinh&apos;s designs
           </div>
         </div>
       </div>

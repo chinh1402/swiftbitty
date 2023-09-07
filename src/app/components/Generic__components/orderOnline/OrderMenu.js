@@ -1,44 +1,39 @@
 'use client'
 import Image from "next/image";
-import React, { useState, useEffect, useContext, createContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import classNames from 'classnames/bind';
-import styles from '../../../order-online/orderonline.module.css';
-import menuData from '../../Data__components/ContentData'
+import styles from "src/app/order-online/orderonline.module.css";
 import generateIncreasingArray from "../functions/increasingArr";
-import {dataContext} from "../../../order-online/page.js"
+import {dataContext} from "src/app/order-online/page.js";
 import ArrowComponent from "../functions/ArrowComponent";
-import { images } from "../../../../../next.config";
-
-
+import arrowDown from "public/images/ar.png";
 const cx = classNames.bind(styles);
+
 function OrderMenu() { 
-  const {dataList, setDataList, setSummaryStack} = useContext(dataContext);
-  // handle click select
+  const {dataList, setDataList, setSummaryStack, menuData} = useContext(dataContext);
 
-  //flow: click vao header tuong ung => mo ra list tuong ung co tabindex tuong ung bang cach them open
-  // => select ra value tuong ung => hien thi tuong ung voi value da selected len header tuong ung
-
-  // exception: blur ra ngoai: tat list di
-  let selectHeader = document.getElementsByClassName(cx('select-header'))
-  let selectList = document.getElementsByClassName(cx('select-list'))
-  let selectValue = document.getElementsByClassName(cx('selected-value'))
-  
-  const [menuList, setMenuList] = useState(0);
-
+  let selectHeader;
+  let selectList;
+  let selectValue;
+  if (typeof document !== 'undefined') {
+    // next khong tim thay document, nen phai de if
+    selectHeader = document.getElementsByClassName(cx('select-header'))
+    selectList = document.getElementsByClassName(cx('select-list'))
+    selectValue = document.getElementsByClassName(cx('selected-value'))
+  }
   // select Array (parse in value as first param to declare length of array, default = 5)
   const selectItemArr = generateIncreasingArray();
 
   // default select header value = 1
-  let existValue
+  let existValueForItemQuantity
   // gens Ids to assign to checkboxes 
   const generateCustomId = (index) => `menuitem${index + 1}`; 
 
   // listID to store all the IDs of labels and inputs
   const [listID, setListID] = useState([]);
-
   // manipulate data to calculate total cost
 
-    const checkBoxHandleChanges = (index, isChecked) => {
+  const checkBoxHandleChanges = (index, isChecked) => {
       // set lai data cua dataList
       setDataList((prevDataList) => {
         const updatedDataList = [...prevDataList];
@@ -61,8 +56,6 @@ function OrderMenu() {
       })
   };
 
-  // consolelog with useEffect
-
   const handleSelect = (index, value) => {
     setDataList((prevDataList) => {
       const updatedDataList = [...prevDataList];
@@ -75,10 +68,6 @@ function OrderMenu() {
     selectValue[index].innerHTML = value;
     selectList[index].classList.toggle(cx('open'));     
   };
-
-  // totalCost logic
-
-  // end of totalcost logic
 
   useEffect(() => {
     for (let index=0;index<selectHeader.length;index++) {
@@ -111,6 +100,7 @@ function OrderMenu() {
     setLeftArrowVisible(newScroll > 0);
     setRightArrowVisible(newScroll < maxScroll);
   };
+  if (!menuData) return null;
 
     return (
       <>
@@ -130,8 +120,7 @@ function OrderMenu() {
           </div>
           <ul className={cx('orderonline__menu-list') + ' row'}>
             {
-              menuData.map((data, index) => {
-                let imageSrc = data.comboImageUrl;
+             listID && menuData && menuData.map((data, index) => {
                 return (
                   <li key={index} className={cx('orderonline__menu-list-item') + ' col l-4 m-6 c-12'}>
                     <div className={cx('item-wrapper')}>
@@ -145,7 +134,7 @@ function OrderMenu() {
                         <span className={cx('img-wrapper')}>
                           <Image 
                           alt="ComboImage"
-                          src={imageSrc}
+                          src={data.comboImageUrl}
                           // specify width and height to get the aspect ratio
                           width={308}
                           height={210}
@@ -153,9 +142,9 @@ function OrderMenu() {
                             width: '100%',
                             height: 'auto',
                           }}
+                          quality={100}
                           priority={true}
                           />
-                          {/* <img src={imageSrc} className={cx('img')}></img> */}
                         </span>
                         <div className={cx('orderonline__details-wrapper')}>
                           <h3 className={cx('item-headline')}>
@@ -167,14 +156,17 @@ function OrderMenu() {
                           <span className={cx('item-price-and-quantity')}>
                             <h4 className={cx('item-price')}>
                               <span className={cx('item-dollar')}>$</span>
-                              {data.totalPrice()}
+                              {data.totalPrice}
                             </h4>
                             <div className={cx('quantity-handler')}>
                               <span className={cx('quantity-text')}>Quantity</span>
                               <span className={cx('select')}>
                                 <div className={cx('select-header')} >
-                                  <span className={cx('selected-value')}>{existValue || 1}</span>
-                                  <img src='../images/ar.png' />
+                                  <span className={cx('selected-value')}>{existValueForItemQuantity || 1}</span>
+                                  <Image 
+                                    src={arrowDown}
+                                    alt="arrow down icon from select"
+                                  />
                                 </div>
                                 <ul className={cx('select-list')} tabIndex={index}>
                                   {

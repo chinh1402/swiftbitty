@@ -1,10 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import aboutImg from 'public/images/about-us.jpg';
-import Link from 'next/link';
 
 function About() {
-    let nullurl
     return (
         <div id="about" className="about-us">
         <div className="grid wide">
@@ -14,7 +12,7 @@ function About() {
                 <h1 className="about-us__heading heading">Who are we?</h1>
                 <p className="about-us__description">
                   From a small food truck to multiple locations, at Swiftbite we
-                  believe that great food doesn't have to be complicated. We use
+                  believe that great food doesn&apos;t have to be complicated. We use
                   fresh, high-quality ingredients to make delicious burgers,
                   fries, and salads that hit the spot. Come see why sometimes,
                   less really is more.
@@ -25,7 +23,7 @@ function About() {
               </div>
             </div>
             <div className="about-us__quote">
-              <span className="highlight highlight-main">"Food</span> is a
+              <span className="highlight highlight-main">&quot;Food</span> is a
               universal language that{" "}
               <span className="highlight">brings people together.</span> I love
               using my creativity and passion for cooking to{" "}

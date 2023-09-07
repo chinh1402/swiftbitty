@@ -3,7 +3,7 @@ import styles from './reservation.module.css';
 import classNames from 'classnames/bind';
 import ReservationForm from '../components/Generic__components/reservation/ReservationForm';
 import Image from 'next/image';
-import reservationpic from '../../../public/images/reservation-pic.jpg';
+import reservationpic from 'public/images/reservation-pic.jpg';
 const cx = classNames.bind(styles)
 
 function Reservation() {

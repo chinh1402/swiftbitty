@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import styles from '../../../order-online/orderonline.module.css';
+import styles from "src/app/order-online/orderonline.module.css";
 import classNames from 'classnames/bind';
-
-
-const RightArrowIcon =  '../../../images/arrow_forward_24px.png'
-const LeftArrowIcon =  '../../../images/arrow_backward_24px.png'
+import RightArrowIcon from  'public/images/arrow_forward_24px.png'
+import LeftArrowIcon from  'public/images/arrow_backward_24px.png'
+import Image from 'next/image';
 
 const cx = classNames.bind(styles);
 
@@ -58,14 +57,15 @@ const ArrowComponent = ({direction, onArrowClick, leftArrowVisible, rightArrowVi
   const arrowVisible = direction === 'Right' ? rightArrowVisible : leftArrowVisible;
 
   return (
-    <img
-      src= {arrowIcon}
-      onClick={handleArrowClick}
-      className={cx(`${direction.toLowerCase()}-arrow-icon`)}
-      style={{
-        opacity: arrowVisible ? 1 : 0,
-      }}
-    />
+      <Image
+        src= {arrowIcon}
+        alt = "Arrow to scroll combos items"
+        onClick={handleArrowClick}
+        className={cx(`${direction.toLowerCase()}-arrow-icon`)}
+        style={{
+          opacity: arrowVisible ? 1 : 0,
+        }}
+      />
     
   );
 };

@@ -229,11 +229,13 @@ h1,h2,h3,h4,h5,.header__logo, .about-us__quote {
   padding: 0 20px;
 }
 
-.menu__combos-list {
+ul.menu__combos-list {
   list-style-type: none;
   display: flex;
   padding-left: 0;
-  margin:80px 0 0 0;
+  margin-top: 80px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
 }
 
 .menu__combos-list-item {

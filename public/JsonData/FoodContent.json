@@ -2,8 +2,9 @@
     {
         "firstLine": "This course is available for lunch, dinner",
         "comboName": "Quick bite",
+        "comboHeadline":"Enjoy on the go" ,
         "comboDescription": "Experience the Quick Bites combo - a main dish, Loaded Fries, and a drink, crafted to satisfy your cravings with every delicious bite.",
-        "comboImageUrl": "../images/order.png",
+        "comboImageUrl": "/images/order.png",
         "comboDetailsItems": [
             {
                 "name": "Classic Cheeseburger",
@@ -26,8 +27,9 @@
     {
         "firstLine": "THIS COURSE IS AVAILABLE FOR BREAKFAST, LUNCH, DINNER",
         "comboName": "Fresh & flavorful",
+        "comboHeadline":"Simply delicious, and healthy too!" ,
         "comboDescription": "Savor freshness and flavor in every bite with our mouth-watering Fresh & Flavorful combo - a main, side salad, and drink crafted from locally-sourced ingredients.",
-        "comboImageUrl": "../images/order2.png",
+        "comboImageUrl": "/images/order2.png",
         "comboDetailsItems": [
             {
                 "name": "Grilled Chicken Salad",
@@ -50,8 +52,9 @@
     {
         "firstLine": "THIS COURSE IS AVAILABLE FOR LUNCH, DINNER",
         "comboName": "Value Meals",
+        "comboHeadline":"Delicious food with fine deal" ,
         "comboDescription": "Get unbeatable value and taste with our Value Meals combo - featuring our most popular mains, paired with a side and drink, all at an affordable price.",
-        "comboImageUrl": "../images/order3.png",
+        "comboImageUrl": "/images/order3.png",
         "comboDetailsItems": [
             {
                 "name": "Cheesy Chicken Quesadilla Combo",
@@ -70,5 +73,80 @@
             }
         ],
         "totalPrice": 12
+    },
+    {
+        "firstLine": "This Course is Available for lunch and dinner",
+        "comboName": "Deluxe Combo",
+        "comboHeadline":"Ultimate Flavor in Every Bite!" ,
+        "comboDescription": "Experience the ultimate Deluxe Combo - a main dish, a side, and a drink, crafted to satisfy your cravings.",
+        "comboImageUrl": "/images/order4.png",
+        "comboDetailsItems": [
+            {
+                "name": "Signature Burger",
+                "description": "Our signature beef patty topped with special sauce, fresh lettuce, and cheddar cheese on a toasted bun.",
+                "price": 8
+            },
+            {
+                "name": "Garlic Parmesan Fries",
+                "description": "Crispy golden fries seasoned with garlic and parmesan, served with a side of ketchup.",
+                "price": 4
+            },
+            {
+                "name": "Choco Lava Cake",
+                "description": "Indulge in a warm and gooey chocolate lava cake, topped with a scoop of vanilla ice cream.",
+                "price": 6
+            }
+        ],
+        "totalPrice": 18
+    },
+    {
+        "firstLine": "This Course is Available for breakfast, lunch, and dinner",
+        "comboName": "Healthy Choice",
+        "comboHeadline":"Nourishing Goodness on Your Plate!" ,
+        "comboDescription": "Make the healthy choice with our nutritious combo - a main, a fresh salad, and a detox drink.",
+        "comboImageUrl": "/images/order5.png",
+        "comboDetailsItems": [
+            {
+                "name": "Grilled Salmon",
+                "description": "Succulent grilled salmon fillet served with steamed vegetables and a lemon herb dressing.",
+                "price": 12
+            },
+            {
+                "name": "Garden Salad",
+                "description": "A vibrant garden salad with mixed greens, cherry tomatoes, cucumbers, and balsamic vinaigrette.",
+                "price": 5
+            },
+            {
+                "name": "Detox Water",
+                "description": "Stay refreshed with our detox water infused with lemon and mint.",
+                "price": 2
+            }
+        ],
+        "totalPrice": 19
+    },
+    {
+        "firstLine": "This Course is Available for lunch and dinner",
+        "comboName": "Family Feast",
+        "comboHeadline":"Feast Together, Share Happiness!" ,
+        "comboDescription": "Treat your family to a feast with our Family Feast combo - featuring a variety of mains, sides, and drinks.",
+        "comboImageUrl": "/images/order6.png",
+        "comboDetailsItems": [
+            {
+                "name": "BBQ Ribs Platter",
+                "description": "Savory BBQ ribs served with coleslaw, cornbread, and a side of BBQ sauce.",
+                "price": 16
+            },
+            {
+                "name": "Loaded Potato Skins",
+                "description": "Crispy potato skins loaded with cheese, bacon, and sour cream.",
+                "price": 8
+            },
+            {
+                "name": "Pitcher of Soda",
+                "description": "Quench your thirst with a pitcher of your favorite soda.",
+                "price": 4
+            }
+        ],
+        "totalPrice": 28
     }
 ]

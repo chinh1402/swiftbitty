@@ -1,7 +1,6 @@
 "use client";
 import { useEffect } from 'react';
 import Link from 'next/link';
-import idreturn from '../Generic__components/functions/idreturn';
 import GetCurrentSlug from '../Generic__components/functions/GetCurrentSlug';
 import isHomePage from '../Generic__components/functions/isHomePage';
 
@@ -62,24 +61,27 @@ const Header = () => {
                           </Link>
                         </li>
                         <li className='header-sidebar-list-item'>
-                          <a className='header-sidebar-item-link'
-                          href={idreturn("#menu")}
+                          <a 
+                          href="#menu"
+                          className='header-sidebar-item-link'
                           style={!isHomePage(GetCurrentSlug()) ? {display: 'none'} : {} }
                           >
                             Menu
                           </a>
                         </li>
                         <li className='header-sidebar-list-item'>
-                          <a className='header-sidebar-item-link'
-                          href={idreturn("#about")}
+                          <a 
+                          href='#about'
+                          className='header-sidebar-item-link'
                           style={!isHomePage(GetCurrentSlug()) ? {display: 'none'} : {} }
                           >
                             About us
                           </a>
                         </li>
                         <li className='header-sidebar-list-item'>
-                          <a className='header-sidebar-item-link'
-                          href={idreturn("#phone-contact")}
+                          <a 
+                          href='#contact'
+                          className='header-sidebar-item-link'
                           style={!isHomePage(GetCurrentSlug()) ? {display: 'none'} : {} }
                           >
                             Contact
@@ -87,13 +89,14 @@ const Header = () => {
                         </li>
                       </ul>
                       <span className='header-sidebar-copyright'>
-                        @Copyright by Ching's design
+                        @Copyright by Ching&apos;s design
                       </span>
                     </div>
 
                     <ul className={!isHomePage(GetCurrentSlug()) ? 'header-list' : 'header-list hide-on-mobile'}>
                       <li className="header-list-items">
-                          <a href={idreturn("#about")} 
+                          <a  
+                          href='#about'
                           className="header-list-items-links"
                           style={!isHomePage(GetCurrentSlug()) ? {display: 'none'} : {} }
                           >
@@ -102,7 +105,7 @@ const Header = () => {
                       </li>
                       <li className="header-list-items">
                           <a 
-                          href={idreturn("#contact")}
+                          href='#contact'
                           className="header-list-items-links"
                           style={!isHomePage(GetCurrentSlug()) ? {display: 'none'} : {} }
                           >

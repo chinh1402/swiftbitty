@@ -1,15 +1,15 @@
 'use client'
 import React, { useState, useEffect, useContext } from 'react';
 import classNames from 'classnames/bind';
-import styles from '../../../order-online/orderonline.module.css';
+import styles from 'src/app/order-online/orderonline.module.css';
 import Validator from '../functions/ValidatorOrderOnline.js';
-import { dataContext } from "../../../order-online/page.js";
-import TransacHandler from '../../Server__components/TransacHandler';
-import GetCurrentSlug from './orderOnline__function/GetCurrentPath';
+import { dataContext } from "src/app/order-online/page.js";
+import TransacHandler from '../functions/TransacHandler.js';
+import GetCurrentPath from '../functions/GetCurrentPath.js';
 const cx = classNames.bind(styles);
 
 function OrderForm() {  
-        const slug = GetCurrentSlug();
+        const path = GetCurrentPath();
 
         let {dataList, totalCost, summaryStack} = useContext(dataContext);
         let itemIndex = 1;
@@ -31,7 +31,7 @@ function OrderForm() {
                         orderInfo += foodNames[i] + " ";
                     }
                     if (orderInfo) {
-                        TransacHandler(orderDetail.totalCost, orderInfo, slug);
+                        TransacHandler(orderDetail.totalCost, orderInfo, path);
                     }
                 }
                 else {

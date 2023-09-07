@@ -2,6 +2,8 @@
 import moment from 'moment';
 import querystring from 'qs';
 import crypto from 'crypto';
+import configData from 'public/JsonData/TransacConfig.json'
+
 function sortObject(obj) {
 	let sorted = {};
 	let str = [];
@@ -19,9 +21,6 @@ function sortObject(obj) {
 }
 export default async function handler(amount, orderInfo, returnUrl) {
     // Fetch static data from /public
-    const resConfig = await fetch('../../JsonData/TransacConfig.json');
-    const configData = await resConfig.json();
-
     const tmnCode = configData.vnp_TmnCode;
     const secretKey = configData.vnp_HashSecret;
     let vnpUrl = configData.vnp_Url;

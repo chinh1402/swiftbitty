@@ -1,6 +1,5 @@
-"use client"
 import React from 'react'
-import contentData from '../../Data__components/ContentData.js'
+import menuData from 'public/JsonData/FoodContent.json';
 
 const MenuDetails = function ({dt}) {
     return dt.comboDetailsItems.map((value, index) => {
@@ -24,20 +23,21 @@ const MenuDetails = function ({dt}) {
 }
 
 export default function MenuItemContent({index}) {
-    const dt = contentData[index]
+    const dt = menuData;
     return (
         <div className="menu__details-wrapper">
             <div className="menu__details">
                 <div className="menu__details-firstline">
-                    {dt.firstLine}
+                    {dt && dt[index].firstLine}
                 </div>
                 <div className="menu__details-infos-total">
-                    <h3 className="menu__details-comboname">{dt.comboName}</h3>
+                    <h3 className="menu__details-comboname">{dt && dt[index].comboName}</h3>
                     <h3 className="menu__details-comboprice">
-                    <span className="menu__details-dollars">$</span>{dt.totalPrice()}
+                    <span className="menu__details-dollars">$</span>{dt && dt[index].totalPrice}
                     </h3>
                 </div>
-                <MenuDetails dt = {dt}  />
+                {/* This component exist cause there might be more than 3 items in a menu */}
+                {dt && <MenuDetails dt={dt[index]} />}
             </div>
         </div>
     )

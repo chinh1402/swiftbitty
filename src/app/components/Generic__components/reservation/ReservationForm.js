@@ -1,16 +1,16 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
-import styles from '../../../reservation/reservation.module.css';
+import styles from 'src/app/reservation/reservation.module.css';
 
 import Validator from '../functions/ValidatorReservation';
-import TransacHandler from '../../Server__components/TransacHandler';
-import GetCurrentSlug from './reservation__function/GetCurrentPath';
+import TransacHandler from '../functions/TransacHandler';
+import GetCurrentPath from '../functions/GetCurrentPath.js';
 
 const cx = classNames.bind(styles);
 
 function ReservationForm() {  
-    const slug = GetCurrentSlug();
+    const path = GetCurrentPath();
     const [totalCost, setTotalCost] = useState(0);
 
     const handleBlur = (event) => {
@@ -28,7 +28,7 @@ function ReservationForm() {
             let orderInfo = "Mua hang tai Swiftbitty, thanh toan cho: "
             + "dat ban " + totalCost + " nguoi";
             if (orderInfo) {
-                TransacHandler(totalCost, orderInfo, slug);
+                TransacHandler(totalCost, orderInfo, path);
             }
         }
     }, [totalCost])

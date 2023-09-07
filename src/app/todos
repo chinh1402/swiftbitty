@@ -1,7 +1,10 @@
-You can now eliglibly deploy
+You are now eligible to deploy!
 
 Things to do after (must, because you used vnpay)
 
 Do some NextJS server action to store + fetch files from static public assets (this is not stores on server, so you 
 can deploy it first)
 Research onto returnurl and ipnURL
+
+And that's all there is. 6/9/2023, wish you luck fixing the bug after deploy :D
+
